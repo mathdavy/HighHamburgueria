@@ -1,8 +1,9 @@
-package model;
+package Model;
 import State.State.Status;
 import java.util.Date;
 
 public class Pedido {
+	
 	double preco;
 	private Status status;
 	private Date data;

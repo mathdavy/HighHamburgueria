@@ -1,6 +1,6 @@
 package State;
 
-import model.Pedido;
+import Model.Pedido;
 
 public interface State {
 

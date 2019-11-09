@@ -1,18 +1,27 @@
 package Model;
 
 public class Produto {
-	private int ID;
+	private int idProduto;
 	private String nome;
 	private String descricao;
 	private double preco;
 	
-	public Produto(int ID, String nome, String descricao, double preco) {
-        this.ID = ID;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-    }
-	
+
+	public Produto(int idProduto, String nome, String descricao, double preco) {
+		this.idProduto = idProduto;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+	}
+
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -36,7 +45,4 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
-	
-	
 }

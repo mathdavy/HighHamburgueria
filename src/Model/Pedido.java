@@ -3,10 +3,19 @@ import State.State.Status;
 import java.util.Date;
 
 public class Pedido {
-	private int ID;
+	private int idPedido;
 	private double preco;
 	private Status status;
 	private Date data;
+	
+
+	public int getIdPedido() {
+		return idPedido;
+	}
+
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
+	}
 
 	public double getPreco() {
 		return preco;

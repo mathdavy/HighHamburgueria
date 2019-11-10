@@ -9,23 +9,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ff4040;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<fx:root prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ff4040;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="372.0" layoutY="213.0" text="Usuario">
          <font>
             <Font name="Tahoma" size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="326.0" layoutY="236.0" promptText="usuario" />
+      <TextField fx:id="TextFieldUsuario" layoutX="326.0" layoutY="236.0" promptText="usuario" />
       <Label layoutX="377.0" layoutY="272.0" text="Senha">
          <font>
             <Font name="Tahoma" size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="326.0" layoutY="295.0" promptText="senha" />
+      <TextField fx:id="TextFieldSenha" layoutX="326.0" layoutY="295.0" promptText="senha" />
       <Label layoutX="212.0" layoutY="419.0" text="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP" />
-      <Button layoutX="371.0" layoutY="348.0" mnemonicParsing="false" text="ENTRAR" textAlignment="CENTER" />
+      <Button fx:id="ButtonLogin" layoutX="371.0" layoutY="348.0" mnemonicParsing="false" text="ENTRAR" textAlignment="CENTER" />
       <ImageView fitHeight="175.0" fitWidth="186.0" layoutX="314.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/HighLogo.jpg" />
@@ -35,4 +34,4 @@
    <effect>
       <DropShadow />
    </effect>
-</AnchorPane>
+</fx:root>

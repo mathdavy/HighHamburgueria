@@ -1,6 +1,6 @@
-package State;
+package ch.State;
 
-import Model.Pedido;
+import ch.Model.Pedido;
 
 public class StatusCancelado implements State{
 	public String estado(Pedido p) {

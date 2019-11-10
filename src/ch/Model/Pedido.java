@@ -1,6 +1,7 @@
-package Model;
-import State.State.Status;
+package ch.Model;
 import java.util.Date;
+
+import ch.State.State.Status;
 
 public class Pedido {
 	private int idPedido;

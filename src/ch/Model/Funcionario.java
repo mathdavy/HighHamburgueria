@@ -1,4 +1,4 @@
-package Model;
+package ch.Model;
 
 public class Funcionario {
 	private int ID;

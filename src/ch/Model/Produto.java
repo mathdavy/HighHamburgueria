@@ -1,4 +1,4 @@
-package Model;
+package ch.Model;
 
 public class Produto {
 	private int idProduto;

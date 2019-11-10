@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: 000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: 000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.MenuFuncionarioController">
    <children>
       <ImageView fitHeight="154.0" fitWidth="160.0" layoutX="323.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/HighLogo.jpg" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="88.0" layoutY="154.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Cadastrar comanda" textFill="WHITE">
+      <Button fx:id="buttonCadastrarComanda" alignment="CENTER" layoutX="88.0" layoutY="154.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Cadastrar comanda" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -23,7 +23,7 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Button layoutX="516.0" layoutY="22.0" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #FF0000;" text="Histórico de pedidos" textFill="WHITE">
+      <Button fx:id="buttonHistoricoPedidos" layoutX="516.0" layoutY="22.0" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #FF0000;" text="Histórico de pedidos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="11.0" />
          </font>
@@ -31,12 +31,12 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Label alignment="CENTER" layoutX="73.0" layoutY="52.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" text="Matheus Davy" textOverrun="CLIP">
+      <Label fx:id="labelNomeDoFuncionario" alignment="CENTER" layoutX="73.0" layoutY="52.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" text="Matheus Davy" textOverrun="CLIP">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="88.0" layoutY="225.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fazer pedido" textFill="WHITE">
+      <Button fx:id="buttomFazerPedido" alignment="CENTER" layoutX="88.0" layoutY="225.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fazer pedido" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -44,7 +44,7 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Button alignment="CENTER" layoutX="88.0" layoutY="295.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Alterar pedido" textFill="WHITE">
+      <Button fx:id="buttonAlterarPedido" alignment="CENTER" layoutX="88.0" layoutY="295.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Alterar pedido" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -52,7 +52,7 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Button alignment="CENTER" layoutX="88.0" layoutY="365.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Finalizar comanda" textFill="WHITE">
+      <Button fx:id="buttonFinalizarComanda" alignment="CENTER" layoutX="88.0" layoutY="365.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Finalizar comanda" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

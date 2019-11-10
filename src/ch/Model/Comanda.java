@@ -5,7 +5,6 @@ public class Comanda {
 	private String nomeCliente;
 	private String telefoneCliente;
 	
-	
 	public int getIdComanda() {
 		return idComanda;
 	}

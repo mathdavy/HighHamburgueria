@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.VboxMenuFuncionarioController">
+   <children>
+      <MenuBar prefHeight="23.0" prefWidth="800.0" style="-fx-background-color: #FF0000;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Comanda">
+            <items>
+              <MenuItem fx:id="menuItemCadastrarComanda" mnemonicParsing="false" text="Cadastrar" />
+                  <MenuItem fx:id="menuItemAlterarComanda" mnemonicParsing="false" text="Alterar" />
+                  <MenuItem fx:id="menuItemFecharComanda" mnemonicParsing="false" text="Fechar" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Pedido">
+            <items>
+              <MenuItem fx:id="menuItemCadatrarPedido" mnemonicParsing="false" text="Cadastrar" />
+                  <MenuItem fx:id="menuItemAlterarPedido" mnemonicParsing="false" text="Alterar" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Relatórios">
+              <items>
+                <MenuItem fx:id="menuItemListarComandas" mnemonicParsing="false" text="Listar Comandas" />
+                  <MenuItem fx:id="menuItemListarPedidos" mnemonicParsing="false" text="Listar Pedidos" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="anchorPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="302.0" fitWidth="335.0" layoutX="249.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/HighLogo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

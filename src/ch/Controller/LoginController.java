@@ -25,24 +25,21 @@ public class LoginController implements Initializable{
 	
 	@FXML
 	public void Login(ActionEvent event) throws IOException {
-		/*try{
-			if(textFieldUsuario.getText().equals("user") && textFieldSenha.getText().equals("pass")) {
+		
+		if(textFieldUsuario.getText().equals("user") && textFieldSenha.getText().equals("pass")) {
 			
-				Stage stage = new Stage();
+			Stage stage = new Stage();
 				
-				Parent root = FXMLLoader.load(getClass().getResource("View/MenuFuncionario.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("View/VboxMenuFuncionario.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("High Hamburgueria");
+			stage.setResizable(false);
+			stage.show();
+		}else {
 				
-				Scene scene = new Scene(root);
-				stage.setScene(scene);
-				stage.setTitle("High Hamburgueria");
-				stage.setResizable(false);
-				stage.show();
-			}else {
-				
-			}
-		}catch(Exception e) {
-			
-		}*/
+		}
+		
 	}
 	
 	@Override

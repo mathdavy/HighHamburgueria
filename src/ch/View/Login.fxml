@@ -4,32 +4,40 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ff4040;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.LoginController">
+<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.LoginController">
    <children>
-      <Label layoutX="372.0" layoutY="213.0" text="Usuario">
+      <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/logoVermelho.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="329.0" layoutY="213.0" text="Usuário" textFill="WHITE">
          <font>
             <Font name="Arial" size="17.0" />
          </font>
       </Label>
       <TextField fx:id="textFieldUsuario" layoutX="326.0" layoutY="236.0" promptText="usuario" />
-      <Label layoutX="377.0" layoutY="272.0" text="Senha">
+      <Label layoutX="329.0" layoutY="272.0" text="Senha" textFill="WHITE">
          <font>
             <Font name="Tahoma" size="17.0" />
          </font>
       </Label>
       <TextField fx:id="textFieldSenha" layoutX="326.0" layoutY="295.0" promptText="senha" />
-      <Label layoutX="212.0" layoutY="419.0" text="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP" />
-      <Button fx:id="buttonLogin" layoutX="371.0" layoutY="348.0" mnemonicParsing="false" onAction="#Login" text="ENTRAR" textAlignment="CENTER" />
-      <ImageView fitHeight="175.0" fitWidth="186.0" layoutX="314.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/HighLogo.jpg" />
-         </image>
-      </ImageView>
+      <Label layoutX="212.0" layoutY="419.0" text="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP" textFill="WHITE" />
+      <Button fx:id="buttonLogin" alignment="CENTER" layoutX="361.0" layoutY="342.0" minHeight="25.0" mnemonicParsing="false" onAction="#Login" prefHeight="34.0" prefWidth="80.0" style="-fx-background-color: #ffffff;" text="Entrar">
+         <font>
+            <Font name="Tahoma Bold" size="15.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#110f0f" />
+         </effect>
+      </Button>
    </children>
    <effect>
       <DropShadow />

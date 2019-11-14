@@ -30,7 +30,7 @@ public class LoginController implements Initializable{
 			
 			Stage stage = new Stage();
 				
-			Parent root = FXMLLoader.load(getClass().getResource("View/VboxMenuFuncionario.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("View/MenuFuncionario.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.setTitle("High Hamburgueria");

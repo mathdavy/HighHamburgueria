@@ -1,53 +1,53 @@
 package ch.Controller;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
+import ch.DAO.ComandaDAO;
 import ch.Model.Comanda;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 
 public class CadastroComandaController implements Initializable {
 
 	@FXML
-    private TableView<Comanda> tableViewComanda;
+    private AnchorPane anchorPaneIniciarComanda;
 
     @FXML
-    private TableColumn<Comanda, String> tableColumnComandaCliente;
+    private Button buttonIniciarComanda;
 
     @FXML
-    private TableColumn<Comanda, String> tableColumnComandaTelefone;
+    private TextField textFieldIDComanda;
 
     @FXML
-    private Label labelComandaCodigo;
+    private TextField textFieldNomeCliente;
 
     @FXML
-    private Label labelComandaCliente;
+    private TextField textFieldTelefoneCliente;
 
-    @FXML
-    private Label labelComandaTelefone;
-
-    @FXML
-    private Button buttonCadastrar;
-    
-    @FXML
-    private Button buttonAlterar;
-    
-    private List<Comanda> listComanda;
-    private ObservableList<Comanda> observableListComanda;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@FXML
+	public void iniciarComanda(ActionEvent event) throws IOException {
+		Comanda c = new Comanda();
+		ComandaDAO dao = new ComandaDAO();
+		c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+		c.setNomeCliente(textFieldNomeCliente.getText());
+		c.setTelefoneCliente(textFieldTelefoneCliente.getText());
+		dao.create(c);
+	}
+	
+	
 
 }

@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("View/CriarComanda.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/ch/View/Login.fxml"));
 		
 		Scene scene = new Scene(root);
 		
@@ -21,7 +21,8 @@ public class Main extends Application {
 		stage.setResizable(false);
 		stage.show();
 	}
-
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

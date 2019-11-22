@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
+import ch.DAO.FuncionarioDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,23 +27,23 @@ public class LoginController implements Initializable{
 	private TextField textFieldSenha;
 	
 	@FXML
-	public void Login(ActionEvent event) throws IOException {
-		
-		if(textFieldUsuario.getText().equals("user") && textFieldSenha.getText().equals("pass")) {
-			
-			Stage stage = new Stage();
-				
-			Parent root = FXMLLoader.load(getClass().getResource("View/MenuFuncionario.fxml"));
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle("High Hamburgueria");
-			stage.setResizable(false);
-			stage.show();
+    void checkLogin(ActionEvent event)  throws IOException{
+		FuncionarioDAO dao = new FuncionarioDAO();
+		if(dao.checkLogin(textFieldUsuario.getText(), textFieldSenha.getText())) {
+			try{
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ch/View/MenuFuncionario.fxml"));
+			    Parent root1 = (Parent) fxmlLoader.load();
+			    Stage stage = new Stage();
+			    stage.setTitle("High Hamburgueria");
+			    stage.setScene(new Scene(root1));  
+			    stage.show();
+			 } catch(Exception e) {
+				 e.printStackTrace();
+			 }
 		}else {
-				
-		}
-		
-	}
+			JOptionPane.showMessageDialog(null, "Senha incorreta");
+		}	
+    }
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.GerenciarComandaController">
    <children>
       <Label fx:id="labelNomeDoFuncionario" alignment="CENTER" layoutX="195.0" layoutY="43.0" minHeight="50.0" prefHeight="50.0" prefWidth="411.0" text="GERENCIADOR DE COMANDA" textOverrun="CLIP">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="buttonAlterarPedido" alignment="CENTER" layoutX="315.0" layoutY="108.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Iniciar Comanda" textFill="WHITE">
+      <Button fx:id="buttonIniciarComanda" alignment="CENTER" layoutX="315.0" layoutY="108.0" minHeight="50.0" mnemonicParsing="false" onAction="#IniciarComanda" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Iniciar Comanda" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -23,7 +23,7 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Button fx:id="buttonAlterarPedido1" alignment="CENTER" layoutX="315.0" layoutY="175.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Histórico " textFill="WHITE">
+      <Button fx:id="buttonHistorico" alignment="CENTER" layoutX="315.0" layoutY="175.0" minHeight="50.0" mnemonicParsing="false" onAction="#HistoricoComanda" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Histórico " textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -31,7 +31,7 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Button fx:id="buttonAlterarPedido11" alignment="CENTER" layoutX="315.0" layoutY="247.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Finalizar Comanda" textFill="WHITE">
+      <Button fx:id="buttonFinalizarComanda" alignment="CENTER" layoutX="315.0" layoutY="247.0" minHeight="50.0" mnemonicParsing="false" onAction="#FinalizarComanda" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Finalizar Comanda" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

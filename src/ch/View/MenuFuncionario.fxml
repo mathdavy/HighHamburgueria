@@ -15,7 +15,7 @@
             <Image url="@Images/HighLogo.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="buttonCadastrarComanda" alignment="CENTER" layoutX="88.0" layoutY="214.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Gerenciar comanda" textFill="WHITE">
+      <Button fx:id="buttonGerenciarComanda" alignment="CENTER" layoutX="88.0" layoutY="214.0" minHeight="50.0" mnemonicParsing="false" onAction="#GerenciaComanda" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Gerenciar comanda" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="buttomFazerPedido" alignment="CENTER" layoutX="88.0" layoutY="285.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fazer pedido" textFill="WHITE">
+      <Button fx:id="buttomFazerPedido" alignment="CENTER" layoutX="88.0" layoutY="285.0" minHeight="50.0" mnemonicParsing="false" onAction="#FazerPedido" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fazer pedido" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

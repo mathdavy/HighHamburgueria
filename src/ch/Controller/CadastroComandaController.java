@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -23,9 +22,6 @@ public class CadastroComandaController implements Initializable {
     private Button buttonIniciarComanda;
 
     @FXML
-    private TextField textFieldIDComanda;
-
-    @FXML
     private TextField textFieldNomeCliente;
 
     @FXML
@@ -35,19 +31,14 @@ public class CadastroComandaController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@FXML
 	public void iniciarComanda(ActionEvent event) throws IOException {
 		Comanda c = new Comanda();
 		ComandaDAO dao = new ComandaDAO();
-		c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
 		c.setNomeCliente(textFieldNomeCliente.getText());
 		c.setTelefoneCliente(textFieldTelefoneCliente.getText());
 		dao.create(c);
 	}
-	
-	
-
 }

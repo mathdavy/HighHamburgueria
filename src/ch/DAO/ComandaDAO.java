@@ -14,10 +14,9 @@ public class ComandaDAO {
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = con.prepareStatement("INSERT INTO comanda (idComanda, Nome_Cliente, Telefone) VALUES(?,?,?)");
-			stmt.setInt (1, c.getIdComanda());
-			stmt.setString(2, c.getNomeCliente());
-			stmt.setString(3, c.getTelefoneCliente());  
+			stmt = con.prepareStatement("INSERT INTO comanda (Nome_Cliente, Telefone) VALUES(?,?)");
+			stmt.setString(1, c.getNomeCliente());
+			stmt.setString(2, c.getTelefoneCliente());  
 			
 			stmt.executeUpdate();
 			

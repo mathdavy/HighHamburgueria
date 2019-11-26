@@ -1,4 +1,4 @@
-package ch.State;
+package ch.Model.State;
 
 import ch.Model.Pedido;
 

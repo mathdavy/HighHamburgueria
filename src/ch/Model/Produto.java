@@ -6,6 +6,9 @@ public class Produto {
 	private String descricao;
 	private double preco;
 	
+	public Produto() {
+
+	}
 
 	public Produto(int idProduto, String nome, String descricao, double preco) {
 		this.idProduto = idProduto;
@@ -45,4 +48,11 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
+	
+	
 }

@@ -37,6 +37,7 @@ public class LoginController implements Initializable{
 			    stage.setTitle("High Hamburgueria");
 			    stage.setScene(new Scene(root1));  
 			    stage.show();
+			    cancelLogin();
 			 } catch(Exception e) {
 				 e.printStackTrace();
 			 }
@@ -44,6 +45,10 @@ public class LoginController implements Initializable{
 			JOptionPane.showMessageDialog(null, "Senha incorreta");
 		}	
     }
+	
+	public void cancelLogin() {
+		buttonLogin.getScene().getWindow().hide();
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

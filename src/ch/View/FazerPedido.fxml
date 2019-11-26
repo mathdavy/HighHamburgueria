@@ -58,7 +58,7 @@
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Label>
-      <ComboBox layoutX="40.0" layoutY="190.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbProdutos" layoutX="40.0" layoutY="190.0" prefWidth="150.0" />
       <ComboBox layoutX="294.0" layoutY="190.0" prefWidth="150.0" />
       <ComboBox layoutX="554.0" layoutY="190.0" prefWidth="150.0" />
    </children>

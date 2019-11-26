@@ -19,10 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class FazerPedidoController implements Initializable{
-	
-	
-	
-	
+
 	@FXML
     private AnchorPane anchorPaneIniciarComanda;
 
@@ -36,8 +33,12 @@ public class FazerPedidoController implements Initializable{
     private TextArea txtAreaComent;
 
     @FXML
-    private ComboBox<?> cbProdutos;
-
+    private ComboBox<Produto> cbHamburguer;
+    
+    List<Produto> produtos = new ArrayList<>();
+    
+    private ObservableList<Produto> obsHamburg;
+    
     @FXML
     void IniciarComanda(ActionEvent event) {
 
@@ -46,22 +47,27 @@ public class FazerPedidoController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ProdutoDAO dao = new ProdutoDAO();
-		/*List<Produto> produtos = new ArrayList<>();
 		
+		
+		/*
+		 * for(Produto p: produtos) { System.out.println(p.getNome()); }
+		 */
+		
+		carregarComboBox();
+	
+
+		//ObservableList<Object> prods = FXCollections.observableArrayList(produtos);
+		//cbProdutos = new ComboBox<Object>();
+		
+	}
+	
+	public void carregarComboBox() {
+		ProdutoDAO dao = new ProdutoDAO();
 		for(Produto p: dao.read()) {
 			produtos.add(p);
 		}
-		
-		for(Produto p: produtos) {
-			
-		}*/
-		
-		
-		
-		
-		
-		
+		obsHamburg = FXCollections.observableArrayList(produtos);
+		cbHamburguer.setItems(obsHamburg);
 	}
     
     

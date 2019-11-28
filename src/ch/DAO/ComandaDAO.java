@@ -8,13 +8,18 @@ import ch.Model.Comanda;
 import connection.ConnectionFactory;
 
 public class ComandaDAO {
+	private Connection connection;
+	
+	public ComandaDAO(){
+		new ConnectionFactory();
+		this.connection = ConnectionFactory.getConnection();
+	}
 	
 	public void create(Comanda c) {
-		Connection con = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = con.prepareStatement("INSERT INTO comanda (Nome_Cliente, Telefone) VALUES(?,?)");
+			stmt = connection.prepareStatement("INSERT INTO comanda (Nome_Cliente, Telefone) VALUES(?,?)");
 			stmt.setString(1, c.getNomeCliente());
 			stmt.setString(2, c.getTelefoneCliente());  
 			
@@ -26,7 +31,7 @@ public class ComandaDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(con, stmt);
+			ConnectionFactory.closeConnection(connection, stmt);
 		}
 	}
 }

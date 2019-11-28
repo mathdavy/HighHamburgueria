@@ -23,7 +23,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="buttonIniciarComanda" alignment="CENTER" layoutX="341.0" layoutY="389.0" minHeight="25.0" mnemonicParsing="false" onAction="#IniciarComanda" prefHeight="35.0" prefWidth="133.0" style="-fx-background-color: #009900;" text="Concluir" textFill="WHITE">
+      <Button fx:id="buttonIniciarPedido" alignment="CENTER" layoutX="341.0" layoutY="389.0" minHeight="25.0" mnemonicParsing="false" onAction="#IniciarPedido" prefHeight="35.0" prefWidth="133.0" style="-fx-background-color: #009900;" text="Concluir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>

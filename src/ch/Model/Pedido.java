@@ -1,6 +1,5 @@
 package ch.Model;
 import java.util.Date;
-
 import ch.Model.State.State.Status;
 
 public class Pedido {
@@ -8,7 +7,7 @@ public class Pedido {
 	private double preco;
 	private Status status;
 	private Date data;
-	
+	private String comentario;
 
 	public int getIdPedido() {
 		return idPedido;
@@ -16,6 +15,14 @@ public class Pedido {
 
 	public void setIdPedido(int idPedido) {
 		this.idPedido = idPedido;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public double getPreco() {
@@ -26,19 +33,19 @@ public class Pedido {
 		this.preco = preco;
 	}
 	
-	public Status getStatus() {
-		return status;
-	}
-	
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-	
 	public Date getData() {
 		return data;
 	}
 	
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 }

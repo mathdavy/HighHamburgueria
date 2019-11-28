@@ -10,15 +10,21 @@ import connection.ConnectionFactory;
 
 public class FuncionarioDAO {
 	
+private Connection connection;
+	
+	public FuncionarioDAO(){
+		new ConnectionFactory();
+		this.connection = ConnectionFactory.getConnection();
+	}
+	
 	public boolean checkLogin(String login, String senha) {
 
-        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
         boolean check = false;
         try {
-            stmt = con.prepareStatement("SELECT * FROM funcionario WHERE usuario = ? AND senha = ?");
+            stmt = connection.prepareStatement("SELECT * FROM funcionario WHERE usuario = ? AND senha = ?");
             stmt.setString(1, login);
             stmt.setString(2, senha);
             rs = stmt.executeQuery();
@@ -31,7 +37,7 @@ public class FuncionarioDAO {
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            ConnectionFactory.closeConnection(con, stmt, rs);
+            ConnectionFactory.closeConnection(connection, stmt, rs);
         }
 
         return check;

@@ -1,8 +1,8 @@
-package ch.Model.State;
+package ch.Model.State.Pedido;
 
 import ch.Model.Pedido;
 
-public class StatusEmAndamento implements State{
+public class StatusEmAndamento implements StatePedido{
 	@Override
 	public String estado(Pedido p) {
         p.setStatus(Status.EM_ANDAMENTO);

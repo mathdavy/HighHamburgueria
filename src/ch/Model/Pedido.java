@@ -1,12 +1,9 @@
 package ch.Model;
-import java.util.Date;
-import ch.Model.State.State.Status;
+import ch.Model.State.Pedido.StatePedido.Status;
 
 public class Pedido {
 	private int idPedido;
-	private double preco;
 	private Status status;
-	private Date data;
 	private String comentario;
 
 	public int getIdPedido() {
@@ -23,22 +20,6 @@ public class Pedido {
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-	
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-	
-	public Date getData() {
-		return data;
-	}
-	
-	public void setData(Date data) {
-		this.data = data;
 	}
 
 	public String getComentario() {

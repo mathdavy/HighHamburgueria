@@ -4,8 +4,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
+import ch.DAO.PedidoDAO;
 import ch.DAO.ProdutoDAO;
 import ch.Model.Comanda;
+import ch.Model.Pedido;
 import ch.Model.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,9 +40,6 @@ public class FazerPedidoController implements Initializable{
     
     @FXML
     private ComboBox<Produto> cbBebidas;
-
-    @FXML
-    private ComboBox<Produto> cbPorcDoce;
     
     private List<Produto> produtos = new ArrayList<>();
     
@@ -47,12 +47,60 @@ public class FazerPedidoController implements Initializable{
     
     private ObservableList<Produto> obsBebida;
     
-    private ObservableList<Produto> obsVariado;
     
     @FXML
     void IniciarPedido(ActionEvent event) {
-    	Comanda comanda = new Comanda();
-    	comanda.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+    	try {
+    		
+    		if(textFieldIDComanda.getText() != null) {
+	    		Comanda comanda = new Comanda();
+		    	comanda.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+		    	
+		    	if(cbHamburguer.getValue() == null && cbBebidas.getValue()!=null) {
+		    		
+		    		Produto bebida = cbBebidas.getValue();
+		    		Comanda c = new Comanda();
+		    		c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+		    		
+		    		Pedido p = new Pedido();
+		    		p.setComentario(txtAreaComent.getText());
+		    		
+		    		PedidoDAO dao = new PedidoDAO();
+		    		dao.create(p, c, bebida);
+		    		
+		    		
+		    	}else if(cbHamburguer.getValue() != null && cbBebidas.getValue()== null) {
+		    		Produto hamburguer = cbHamburguer.getValue();
+		    		Comanda c = new Comanda();
+		    		c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+		    		
+		    		Pedido p = new Pedido();
+		    		p.setComentario(txtAreaComent.getText());
+		    		
+		    		PedidoDAO dao = new PedidoDAO();
+		    		dao.create(p, c, hamburguer);
+		    		
+		    	}else {
+		    		Produto hamburguer = cbHamburguer.getValue();
+			    	Produto bebida = cbBebidas.getValue();
+			    	
+			    	Comanda c = new Comanda();
+		    		c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
+		    		
+		    		Pedido p = new Pedido();
+		    		p.setComentario(txtAreaComent.getText());
+		    		
+		    		PedidoDAO dao = new PedidoDAO();
+		    		dao.create(p, c, hamburguer, bebida);
+					
+		    	}
+				buttonIniciarPedido.getScene().getWindow().hide();
+    		}
+			
+    	}catch(Exception e) {
+    		JOptionPane.showMessageDialog(null,  e);
+    		buttonIniciarPedido.getScene().getWindow().hide();
+    	}
     }
     
 
@@ -64,7 +112,7 @@ public class FazerPedidoController implements Initializable{
 		}
 		carregarComboBoxHamburg();
 		carregarComboBoxBebidas();
-		carregarComboBoxVariados();
+		
 	}
 	
 	public void carregarComboBoxHamburg() {
@@ -76,10 +124,4 @@ public class FazerPedidoController implements Initializable{
 		obsBebida = FXCollections.observableArrayList(produtos);
 		cbBebidas.setItems(obsBebida);
 	}
-	
-	public void carregarComboBoxVariados() {
-		obsVariado = FXCollections.observableArrayList(produtos);
-		cbPorcDoce.setItems(obsVariado);
-	}
-  
 }

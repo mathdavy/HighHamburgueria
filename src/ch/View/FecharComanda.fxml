@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneIniciarComanda" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.Controller.FecharComandaController">
    <children>
-      <Label fx:id="labelNomeDoFuncionario" alignment="CENTER" layoutX="312.0" layoutY="39.0" minHeight="50.0" prefHeight="50.0" prefWidth="411.0" text="FECHAR COMANDA" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="312.0" layoutY="39.0" minHeight="50.0" prefHeight="50.0" prefWidth="411.0" text="FECHAR COMANDA" textOverrun="CLIP">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="buttonIniciarComanda" alignment="CENTER" layoutX="416.0" layoutY="380.0" minHeight="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fechar comanda" textFill="WHITE" wrapText="true">
+      <Button fx:id="buttonFecharComanda" alignment="CENTER" layoutX="416.0" layoutY="380.0" minHeight="50.0" mnemonicParsing="false" onAction="#CloseComanda" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: #FF0000;" text="Fechar comanda" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Tahoma Bold" size="15.0" />
          </font>
@@ -25,13 +25,13 @@
             <InnerShadow color="#110f0f" />
          </effect>
       </Button>
-      <Label fx:id="labelNomeDoFuncionario1" alignment="CENTER" layoutX="255.0" layoutY="81.0" minHeight="50.0" prefHeight="50.0" prefWidth="47.0" text="ID" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="255.0" layoutY="81.0" minHeight="50.0" prefHeight="50.0" prefWidth="47.0" text="ID" textOverrun="CLIP">
          <font>
             <Font name="Tahoma Bold" size="12.0" />
          </font>
       </Label>
       <TextField fx:id="textFieldIDComanda" layoutX="268.0" layoutY="117.0" promptText="45" />
-      <TextArea editable="false" layoutX="268.0" layoutY="163.0" prefHeight="199.0" prefWidth="465.0" wrapText="true" />
+      <TextArea fx:id="textAreaInfoComanda" editable="false" layoutX="268.0" layoutY="163.0" prefHeight="199.0" prefWidth="465.0" wrapText="true" />
       <ImageView fitHeight="357.0" fitWidth="261.0" layoutX="58.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/muito.png" />
@@ -42,7 +42,7 @@
             <Image url="@Images/HighLogo.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="buttonIniciarComanda1" alignment="CENTER" layoutX="431.0" layoutY="116.0" minHeight="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #009900;" text="Buscar" textFill="WHITE">
+      <Button fx:id="buttonBuscarComanda" alignment="CENTER" layoutX="431.0" layoutY="116.0" minHeight="25.0" mnemonicParsing="false" onAction="#SearchComanda" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #009900;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font>

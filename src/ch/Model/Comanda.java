@@ -1,10 +1,21 @@
 package ch.Model;
 
+import ch.Model.State.Comanda.StateComanda.Status;
+
 public class Comanda {
 	private int idComanda;
 	private String nomeCliente;
 	private String telefoneCliente;
+	private Status status;
 	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public int getIdComanda() {
 		return idComanda;
 	}
@@ -28,6 +39,4 @@ public class Comanda {
 	public void setTelefoneCliente(String telefoneCliente) {
 		this.telefoneCliente = telefoneCliente;
 	}
-	
-	
 }

@@ -53,13 +53,13 @@ public class FecharComandaController implements Initializable{
 		}
 		
 		for(Produto p: produtos) {
-			System.out.println(p.getNome());
-		}
-		
-		for(Produto p: produtos) {
 			texto += p.getNome() + ": " + p.getDescricao();
 			texto += "\n";
 		}
+		
+		ComandaDAO daoComan = new ComandaDAO();
+		double valorTotal = daoComan.getValorTotal(c);
+		texto += "\nPreço total: " + valorTotal;
 		
 		textAreaInfoComanda.setText(texto);
 		

@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 import ch.Model.Comanda;
-import ch.Model.Produto;
+import ch.Model.State.Comanda.StateComanda.Status;
 import ch.Model.State.Comanda.StatusAberto;
 import ch.Model.State.Comanda.StatusFechada;
 import connection.ConnectionFactory;
@@ -63,11 +62,11 @@ public class ComandaDAO {
 		}
 	}
 	
-	public double read(Comanda c){
+	public double getValorTotal(Comanda c){
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		List<Produto> produtos = new ArrayList<>();
+		double valorTotal = 0;
 		
 		try {
 			stmt = connection.prepareStatement("SELECT sum(preco) as Valor_total "
@@ -80,19 +79,14 @@ public class ComandaDAO {
 					+ "ON p.idPedido = pp.idPedido "
 					+ "INNER JOIN produto as prod "
 					+ "ON pp.idProduto = prod.idProduto "
-					+ "WHERE c.idComanda = 7;");
+					+ "WHERE c.idComanda = ?;");
 			
 			stmt.setInt(1, c.getIdComanda());
 			
 			rs = stmt.executeQuery();
 			
-			while(rs.next()) {
-				Produto produto = new Produto();
-				produto.setIdProduto(rs.getInt("idProduto"));
-				produto.setPreco(rs.getDouble("preco"));
-				produto.setDescricao(rs.getString("descricao"));
-				produto.setNome(rs.getString("nome"));
-				produtos.add(produto);
+			while (rs.next()){
+				valorTotal = rs.getDouble("Valor_total");
 			}
 			
 		} catch (SQLException e) {
@@ -100,6 +94,41 @@ public class ComandaDAO {
 		}finally {
 			ConnectionFactory.closeConnection(connection, stmt, rs);
 		}
-		return 0;
+		return valorTotal;
+	}
+	
+	public List<Comanda> read(){
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Comanda> comandas = new ArrayList<>();
+		
+		try {
+			stmt = connection.prepareStatement("SELECT * FROM comanda");
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Comanda comanda = new Comanda();
+				comanda.setIdComanda(rs.getInt("idComanda"));
+				comanda.setNomeCliente(rs.getString("Nome_Cliente"));
+				comanda.setTelefoneCliente(rs.getString("Telefone"));
+				String estado = rs.getString("Estado");
+				if(estado.equals("Comanda Fechada")) {
+					comanda.setStatus(Status.FECHADA);
+				}else {
+					comanda.setStatus(Status.ABERTA);
+				}
+				
+				comandas.add(comanda);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(connection, stmt, rs);
+		}
+
+		return comandas;
 	}
 }

@@ -6,20 +6,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import ch.Model.Comanda;
 import ch.Model.Produto;
-import connection.ConnectionFactory;
+import ch.util.connection.ConexaoMySQL;
 
-public class ProdutoDAO {
+public class ProdutoDAO implements BaseProdutoDAO{
 	
 	private Connection connection;
-	
-	public ProdutoDAO(){
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+    
+    /*public ProdutoDAO(){
 		new ConnectionFactory();
 		this.connection = ConnectionFactory.getConnection();
-	}
+	}*/
 	
+	@Override
 	public List<Produto> read(){
 		
 		PreparedStatement stmt = null;
@@ -42,11 +50,12 @@ public class ProdutoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt, rs);
+			ConexaoMySQL.closeConnection(connection, stmt, rs);
 		}
 		return produtos;
 	}
 	
+	@Override
 	public List<Produto> read(Comanda c){
 		
 		PreparedStatement stmt = null;
@@ -82,7 +91,7 @@ public class ProdutoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt, rs);
+			ConexaoMySQL.closeConnection(connection, stmt, rs);
 		}
 		return produtos;
 	}

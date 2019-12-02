@@ -6,17 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import connection.ConnectionFactory;
+import ch.util.connection.ConexaoMySQL;
 
-public class FuncionarioDAO {
+public class FuncionarioDAO implements BaseFuncionarioDAO{
 	
-private Connection connection;
+	private Connection connection;
 	
-	public FuncionarioDAO(){
-		new ConnectionFactory();
-		this.connection = ConnectionFactory.getConnection();
+	public Connection getConnection() {
+	    return connection;
 	}
 	
+	public void setConnection(Connection connection) {
+	    this.connection = connection;
+	}
+	
+	@Override
 	public boolean checkLogin(String login, String senha) {
 
         PreparedStatement stmt = null;
@@ -37,7 +41,7 @@ private Connection connection;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            ConnectionFactory.closeConnection(connection, stmt, rs);
+            ConexaoMySQL.closeConnection(connection, stmt, rs);
         }
 
         return check;

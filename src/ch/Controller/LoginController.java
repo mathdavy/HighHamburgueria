@@ -2,11 +2,14 @@ package ch.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
 import ch.DAO.FuncionarioDAO;
+import ch.util.connection.Conexao;
+import ch.util.connection.ConexaoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,10 +29,13 @@ public class LoginController implements Initializable{
 	@FXML
 	private TextField textFieldSenha;
 	
+	private final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+    private final Connection connection = conexao.conectar();
+    private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+	
 	@FXML
     void checkLogin(ActionEvent event)  throws IOException{
-		FuncionarioDAO dao = new FuncionarioDAO();
-		if(dao.checkLogin(textFieldUsuario.getText(), textFieldSenha.getText())) {
+		if(funcionarioDAO.checkLogin(textFieldUsuario.getText(), textFieldSenha.getText())) {
 			try{
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ch/View/MenuFuncionario.fxml"));
 			    Parent root1 = (Parent) fxmlLoader.load();
@@ -52,8 +58,7 @@ public class LoginController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+		funcionarioDAO.setConnection (connection);
 	}
 	
 }

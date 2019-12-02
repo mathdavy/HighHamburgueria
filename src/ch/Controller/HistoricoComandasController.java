@@ -1,11 +1,14 @@
 package ch.Controller;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import ch.DAO.ComandaDAO;
 import ch.Model.Comanda;
+import ch.util.connection.Conexao;
+import ch.util.connection.ConexaoFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,21 +37,26 @@ public class HistoricoComandasController implements Initializable{
     private List<Comanda> listComanda;
     private ObservableList<Comanda> obsListComanda;
     
+    private final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+    private final Connection connection = conexao.conectar();
+    private final ComandaDAO comandaDAO = new ComandaDAO();
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		comandaDAO.setConnection(connection);
 		carregarTableViewComanda();
 		
 	}
 	
 	public void carregarTableViewComanda() {
-		ComandaDAO dao = new ComandaDAO();
+		
 
 		tableColumnID.setCellValueFactory(new PropertyValueFactory<>("idComanda"));
 		tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
 		tableColumnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
 		tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
 		
-		listComanda = dao.read();
+		listComanda = comandaDAO.read();
 		
 		obsListComanda = FXCollections.observableArrayList(listComanda);
 		tableViwComanda.setItems(obsListComanda);

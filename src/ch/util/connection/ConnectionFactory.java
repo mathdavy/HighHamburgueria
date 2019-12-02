@@ -1,4 +1,4 @@
-package connection;
+package ch.util.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,9 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger; 
 
 
-public class ConnectionFactory implements Conexao{
+public class ConnectionFactory{
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/hightables";
+	private static final String URL = "jdbc:mysql://localhost:3306/hightables?autoReconnect=true&useSSL=false";
 	private static final String USER = "root";
 	private static final String PASS = "12345";
 	

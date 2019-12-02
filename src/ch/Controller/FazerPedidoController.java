@@ -1,6 +1,7 @@
 package ch.Controller;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -10,6 +11,8 @@ import ch.DAO.ProdutoDAO;
 import ch.Model.Comanda;
 import ch.Model.Pedido;
 import ch.Model.Produto;
+import ch.util.connection.Conexao;
+import ch.util.connection.ConexaoFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,9 +50,13 @@ public class FazerPedidoController implements Initializable{
     
     private ObservableList<Produto> obsBebida;
     
-    
     @FXML
     void IniciarPedido(ActionEvent event) {
+    	final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+        final Connection connection = conexao.conectar();
+        final PedidoDAO pedidoDAO = new PedidoDAO();
+        pedidoDAO.setConnection(connection);
+        
     	try {
     		
     		if(textFieldIDComanda.getText() != null) {
@@ -65,8 +72,8 @@ public class FazerPedidoController implements Initializable{
 		    		Pedido p = new Pedido();
 		    		p.setComentario(txtAreaComent.getText());
 		    		
-		    		PedidoDAO dao = new PedidoDAO();
-		    		dao.create(p, c, bebida);
+		    		
+		    		pedidoDAO.create(p, c, bebida);
 		    		
 		    		
 		    	}else if(cbHamburguer.getValue() != null && cbBebidas.getValue()== null) {
@@ -77,8 +84,8 @@ public class FazerPedidoController implements Initializable{
 		    		Pedido p = new Pedido();
 		    		p.setComentario(txtAreaComent.getText());
 		    		
-		    		PedidoDAO dao = new PedidoDAO();
-		    		dao.create(p, c, hamburguer);
+		    		
+		    		pedidoDAO.create(p, c, hamburguer);
 		    		
 		    	}else {
 		    		Produto hamburguer = cbHamburguer.getValue();
@@ -90,8 +97,8 @@ public class FazerPedidoController implements Initializable{
 		    		Pedido p = new Pedido();
 		    		p.setComentario(txtAreaComent.getText());
 		    		
-		    		PedidoDAO dao = new PedidoDAO();
-		    		dao.create(p, c, hamburguer, bebida);
+		    		
+		    		pedidoDAO.create(p, c, hamburguer, bebida);
 					
 		    	}
 				buttonIniciarPedido.getScene().getWindow().hide();
@@ -106,8 +113,12 @@ public class FazerPedidoController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ProdutoDAO dao = new ProdutoDAO();
-		for(Produto p: dao.read()) {
+		final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+        final Connection connection = conexao.conectar();
+        final ProdutoDAO produtoDAO = new ProdutoDAO();
+		produtoDAO.setConnection(connection);
+		
+		for(Produto p: produtoDAO.read()) {
 			produtos.add(p);
 		}
 		carregarComboBoxHamburg();

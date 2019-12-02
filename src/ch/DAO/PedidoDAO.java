@@ -7,23 +7,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-
 import ch.Model.Comanda;
 import ch.Model.Pedido;
 import ch.Model.Produto;
 import ch.Model.State.Pedido.StatusConcluido;
 import ch.Model.State.Pedido.StatusEmAndamento;
-import connection.ConnectionFactory;
+import ch.util.connection.ConexaoMySQL;
 
-public class PedidoDAO {
+
+public class PedidoDAO implements BasePedidoDAO{
 	
 	private Connection connection;
-	
-	public PedidoDAO(){
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+    
+    /*public PedidoDAO(){
 		new ConnectionFactory();
 		this.connection = ConnectionFactory.getConnection();
-	}
+	}*/
 	
+	@Override
 	public List<Pedido> read(){
 		
 		PreparedStatement stmt = null;
@@ -46,12 +55,13 @@ public class PedidoDAO {
 			
 			e.printStackTrace();
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt, rs);
+			ConexaoMySQL.closeConnection(connection, stmt, rs);
 		}
 
 		return pedidos;
 	}
-
+	
+	@Override
 	public void create(Pedido p, Comanda c, Produto prod) {
 		PreparedStatement stmt = null;
 		
@@ -68,6 +78,7 @@ public class PedidoDAO {
 		
 		
 		try {
+			
 			stmt = connection.prepareStatement("INSERT INTO pedido (status, comentario) VALUES(?,?)");
 			stmt.setString(1, new StatusEmAndamento().estado(p));
 			stmt.setString(2, p.getComentario()); 
@@ -110,10 +121,11 @@ public class PedidoDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt);
+			ConexaoMySQL.closeConnection(connection, stmt);
 		}
 	}
 	
+	@Override
 	public void create(Pedido p, Comanda c, Produto prod1, Produto prod2) {
 		PreparedStatement stmt = null;
 		
@@ -126,8 +138,6 @@ public class PedidoDAO {
 		
 		PreparedStatement stmtIdProduto = null;
 		ResultSet rsIdProduto = null;
-		
-		
 		
 		try {
 			stmt = connection.prepareStatement("INSERT INTO pedido (status, comentario) VALUES(?,?)");
@@ -186,7 +196,7 @@ public class PedidoDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt);
+			ConexaoMySQL.closeConnection(connection, stmt);
 		}
 	}
 	
@@ -207,7 +217,7 @@ public class PedidoDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt);
+			ConexaoMySQL.closeConnection(connection, stmt);
 		}
 	}
 }

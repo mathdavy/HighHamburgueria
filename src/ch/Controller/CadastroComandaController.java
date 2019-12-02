@@ -2,9 +2,12 @@ package ch.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import ch.DAO.ComandaDAO;
 import ch.Model.Comanda;
+import ch.util.connection.Conexao;
+import ch.util.connection.ConexaoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,18 +30,20 @@ public class CadastroComandaController implements Initializable {
     @FXML
     private TextField textFieldTelefoneCliente;
 
+    private final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+    private final Connection connection = conexao.conectar();
+    private final ComandaDAO comandaDAO = new ComandaDAO();
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		comandaDAO.setConnection(connection);
 	}
 	
 	@FXML
 	public void iniciarComanda(ActionEvent event) throws IOException {
 		Comanda c = new Comanda();
-		ComandaDAO dao = new ComandaDAO();
 		c.setNomeCliente(textFieldNomeCliente.getText());
 		c.setTelefoneCliente(textFieldTelefoneCliente.getText());
-		dao.create(c);
+		comandaDAO.create(c);
 	}
 }

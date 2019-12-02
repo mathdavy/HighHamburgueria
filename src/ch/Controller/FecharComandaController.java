@@ -1,6 +1,7 @@
 package ch.Controller;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -9,6 +10,8 @@ import ch.DAO.ComandaDAO;
 import ch.DAO.ProdutoDAO;
 import ch.Model.Comanda;
 import ch.Model.Produto;
+import ch.util.connection.Conexao;
+import ch.util.connection.ConexaoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,22 +36,40 @@ public class FecharComandaController implements Initializable{
 
     @FXML
     void CloseComanda(ActionEvent event) {
-    	ComandaDAO dao = new ComandaDAO();
+    	
+    	final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+        final Connection connection = conexao.conectar();
+        final ComandaDAO comandaDAO = new ComandaDAO();
+        comandaDAO.setConnection(connection);
+    	
+    	
     	Comanda c = new Comanda();
     	c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
-    	dao.update(c);
+    	comandaDAO.update(c);
     }
 
     @FXML
     void SearchComanda(ActionEvent event) {
+    	
+    	final Conexao conexao = ConexaoFactory.getDatabase("mysql");
+        final Connection connection = conexao.conectar();
+        final ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.setConnection(connection);
+        
+        final Conexao conexao2 = ConexaoFactory.getDatabase("mysql");
+        final Connection connection2 = conexao2.conectar();
+        final ComandaDAO comandaDAO = new ComandaDAO();
+        
+        comandaDAO.setConnection(connection2);
+        
+
     	textAreaInfoComanda.clear();
     	produtos.clear();
     	String texto= "";
-    	ProdutoDAO dao = new ProdutoDAO();
     	Comanda c = new Comanda();
     	c.setIdComanda(Integer.parseInt(textFieldIDComanda.getText()));
     	
-		for(Produto p: dao.read(c)) {
+		for(Produto p: produtoDAO.read(c)) {
 			produtos.add(p);
 		}
 		
@@ -57,8 +78,7 @@ public class FecharComandaController implements Initializable{
 			texto += "\n";
 		}
 		
-		ComandaDAO daoComan = new ComandaDAO();
-		double valorTotal = daoComan.getValorTotal(c);
+		double valorTotal = comandaDAO.getValorTotal(c);
 		texto += "\nPreço total: " + valorTotal;
 		
 		textAreaInfoComanda.setText(texto);

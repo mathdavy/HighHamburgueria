@@ -8,19 +8,29 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import ch.Model.Comanda;
-import ch.Model.State.Comanda.StateComanda.Status;
 import ch.Model.State.Comanda.StatusAberto;
 import ch.Model.State.Comanda.StatusFechada;
-import connection.ConnectionFactory;
+import ch.Model.State.Comanda.StateComanda.Status;
+import ch.util.connection.ConexaoMySQL;
 
-public class ComandaDAO {
+public class ComandaDAO implements BaseComandaDAO{
 	private Connection connection;
-	
-	public ComandaDAO(){
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+    
+    /*public ComandaDAO(){
 		new ConnectionFactory();
 		this.connection = ConnectionFactory.getConnection();
-	}
+	}*/
+    
 	
+	@Override
 	public void create(Comanda c) {
 		PreparedStatement stmt = null;
 		
@@ -38,10 +48,11 @@ public class ComandaDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt);
+			ConexaoMySQL.closeConnection(connection, stmt);
 		}
 	}
 	
+	@Override
 	public void update(Comanda c) {
 		PreparedStatement stmt = null;
 		
@@ -58,10 +69,11 @@ public class ComandaDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
 			
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt);
+			ConexaoMySQL.closeConnection(connection, stmt);
 		}
 	}
 	
+	@Override
 	public double getValorTotal(Comanda c){
 		
 		PreparedStatement stmt = null;
@@ -92,11 +104,12 @@ public class ComandaDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt, rs);
+			ConexaoMySQL.closeConnection(connection, stmt, rs);
 		}
 		return valorTotal;
 	}
 	
+	@Override
 	public List<Comanda> read(){
 		
 		PreparedStatement stmt = null;
@@ -126,7 +139,7 @@ public class ComandaDAO {
 			
 			e.printStackTrace();
 		}finally {
-			ConnectionFactory.closeConnection(connection, stmt, rs);
+			ConexaoMySQL.closeConnection(connection, stmt, rs);
 		}
 
 		return comandas;

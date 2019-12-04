@@ -10,22 +10,19 @@ import ch.Model.Comanda;
 import ch.Model.Produto;
 import ch.util.connection.ConexaoMySQL;
 
-public class ProdutoDAO implements BaseProdutoDAO{
+public class ProdutoDAO implements BaseProdutoDAO, BaseDAO{
 	
 	private Connection connection;
 
+	@Override
     public Connection getConnection() {
         return connection;
     }
 
+	@Override
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-    
-    /*public ProdutoDAO(){
-		new ConnectionFactory();
-		this.connection = ConnectionFactory.getConnection();
-	}*/
 	
 	@Override
 	public List<Produto> read(){

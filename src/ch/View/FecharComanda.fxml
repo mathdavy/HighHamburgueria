@@ -32,7 +32,7 @@
       </Label>
       <TextField fx:id="textFieldIDComanda" layoutX="268.0" layoutY="117.0" promptText="45" />
       <TextArea fx:id="textAreaInfoComanda" editable="false" layoutX="268.0" layoutY="163.0" prefHeight="199.0" prefWidth="465.0" wrapText="true" />
-      <ImageView fitHeight="357.0" fitWidth="261.0" layoutX="58.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="372.0" fitWidth="200.0" layoutX="50.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/muito.png" />
          </image>

@@ -13,22 +13,18 @@ import ch.Model.State.Comanda.StatusFechada;
 import ch.Model.State.Comanda.StateComanda.Status;
 import ch.util.connection.ConexaoMySQL;
 
-public class ComandaDAO implements BaseComandaDAO{
+public class ComandaDAO implements BaseComandaDAO, BaseDAO{
 	private Connection connection;
 
+	@Override
     public Connection getConnection() {
         return connection;
     }
 
+	@Override
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-    
-    /*public ComandaDAO(){
-		new ConnectionFactory();
-		this.connection = ConnectionFactory.getConnection();
-	}*/
-    
 	
 	@Override
 	public void create(Comanda c) {

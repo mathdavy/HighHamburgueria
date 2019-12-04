@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
-
 import ch.DAO.FuncionarioDAO;
 import ch.util.connection.Conexao;
 import ch.util.connection.ConexaoFactory;

@@ -8,14 +8,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ch.util.connection.ConexaoMySQL;
 
-public class FuncionarioDAO implements BaseFuncionarioDAO{
+public class FuncionarioDAO implements BaseFuncionarioDAO, BaseDAO{
 	
 	private Connection connection;
 	
+	@Override
 	public Connection getConnection() {
 	    return connection;
 	}
 	
+	@Override
 	public void setConnection(Connection connection) {
 	    this.connection = connection;
 	}

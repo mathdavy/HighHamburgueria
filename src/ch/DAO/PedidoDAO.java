@@ -15,22 +15,19 @@ import ch.Model.State.Pedido.StatusEmAndamento;
 import ch.util.connection.ConexaoMySQL;
 
 
-public class PedidoDAO implements BasePedidoDAO{
+public class PedidoDAO implements BasePedidoDAO, BaseDAO{
 	
 	private Connection connection;
 
+	@Override
     public Connection getConnection() {
         return connection;
     }
 
+	@Override
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-    
-    /*public PedidoDAO(){
-		new ConnectionFactory();
-		this.connection = ConnectionFactory.getConnection();
-	}*/
 	
 	@Override
 	public List<Pedido> read(){
@@ -200,7 +197,7 @@ public class PedidoDAO implements BasePedidoDAO{
 		}
 	}
 	
-	
+	@Override
 	public void update(Pedido p) {
 		PreparedStatement stmt = null;
 		
